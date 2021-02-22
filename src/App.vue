@@ -4,7 +4,7 @@
     <div class="container">
         <Search @search="updatelist"></Search>
         <div class="menu">
-         <MusicList :list="musiclist" @switchmusic="switchmusic"></MusicList>
+         <MusicList :list="musiclist"></MusicList>
           <MusicDetails :current="currentsong"></MusicDetails>
           <Comments :current="currentsong"></Comments>
         </div>
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import {computed, ref} from "vue";
+import {computed, ref, provide} from "vue";
 import axios from "axios";
 import MusicList from "./components/MusicList";
 import Comments from "./components/Comments";
@@ -38,6 +38,7 @@ export default {
       .then(function(response) {currentsong.value = response.data.songs[0];})
       .catch(function(err) {console.log(err);});
     }
+    provide('switchmusic',switchmusic);
     return{
       musiclist,
       updatelist,

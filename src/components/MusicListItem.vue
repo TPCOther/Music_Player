@@ -1,11 +1,16 @@
 <template>
-      <li>{{music.name}}<i class="fa fa-play-circle-o fa-lg" @click="$emit('switchmusic', music.id)"></i></li>
+      <li>{{music.name}}<i class="fa fa-play-circle-o fa-lg" @click="switchmusic(music.id)"></i></li>
 </template>
 
 <script>
+import {inject} from 'vue'
 export default {
     name: "MusicListItem",
     props: ["music"],
+    setup () {
+      const switchmusic = inject('switchmusic');
+      return {switchmusic};
+    }
 }
 </script>
 
