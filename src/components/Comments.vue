@@ -15,7 +15,7 @@ export default {
     setup (props) {
       const comments = ref([]);
       const getcomments = watch ( () => {
-        axios.get("http://192.168.1.105:3000/comment/music?id="+props.current.id)
+        axios.get("http://localhost:3000/comment/music?id="+props.current.id)
         .then(function(response){console.log(response.data.hotComments); comments.value = [...response.data.hotComments];})
         .catch(function(err) {console.log(err);});
       });

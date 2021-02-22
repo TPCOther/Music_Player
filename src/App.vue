@@ -34,7 +34,7 @@ export default {
     })
     const updatelist = (newlist) => {musiclist.value = [...newlist];}
     const switchmusic = (val) => {
-      axios.get("http://192.168.1.105:3000/song/detail?ids="+val)
+      axios.get("http://localhost:3000/song/detail?ids="+val)
       .then(function(response) {currentsong.value = response.data.songs[0];})
       .catch(function(err) {console.log(err);});
     }
